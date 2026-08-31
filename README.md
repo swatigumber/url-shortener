@@ -22,27 +22,31 @@ Docker Compose
 Maven
 GitHub Actions
 Render
-# 🏗️ Architecture
-Internet
-│
-▼
-┌───────────────────┐
-│      Render       │
-│   Docker + App    │
-└─────────┬─────────┘
-│
-▼
-┌───────────────────┐
-│   Spring Boot     │
-│  URL Shortener    │
-└─────────┬─────────┘
-│
-│ JPA / JDBC
-▼
-┌───────────────────┐
-│   PostgreSQL      │
-│      Neon         │
-└───────────────────┘
+## 🏗️ Architecture
+
+```text
+                         Internet
+                            │
+                            ▼
+                   ┌─────────────────┐
+                   │     Render      │
+                   │  Docker + App   │
+                   └────────┬────────┘
+                            │
+                            ▼
+                   ┌─────────────────┐
+                   │   Spring Boot   │
+                   │  URL Shortener  │
+                   └────────┬────────┘
+                            │
+                         JPA / JDBC
+                            │
+                            ▼
+                   ┌─────────────────┐
+                   │   PostgreSQL    │
+                   │      Neon       │
+                   └─────────────────┘
+```
 
 
 For local development, PostgreSQL can be run using Docker Compose.
