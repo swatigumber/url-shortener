@@ -22,31 +22,28 @@ Docker Compose
 Maven
 GitHub Actions
 Render
-## 🏗️ Architecture
+# 🏗️ Architecture
+Internet
+│
+▼
+┌───────────────────┐
+│      Render       │
+│   Docker + App    │
+└─────────┬─────────┘
+│
+▼
+┌───────────────────┐
+│   Spring Boot     │
+│  URL Shortener    │
+└─────────┬─────────┘
+│
+│ JPA / JDBC
+▼
+┌───────────────────┐
+│   PostgreSQL      │
+│      Neon         │
+└───────────────────┘
 
-```text
-                         Internet
-                            │
-                            ▼
-                   ┌─────────────────┐
-                   │     Render      │
-                   │  Docker + App   │
-                   └────────┬────────┘
-                            │
-                            ▼
-                   ┌─────────────────┐
-                   │   Spring Boot   │
-                   │  URL Shortener  │
-                   └────────┬────────┘
-                            │
-                         JPA / JDBC
-                            │
-                            ▼
-                   ┌─────────────────┐
-                   │   PostgreSQL    │
-                   │      Neon       │
-                   └─────────────────┘
-```
 
 For local development, PostgreSQL can be run using Docker Compose.
 
@@ -66,11 +63,11 @@ Cloud deployment using Render
 
 
 # 📡 API
-**1. Shorten a URL**
+1. Shorten a URL
 
 POST
 
-`/shorten`
+/shorten
 
 
 Example:
@@ -95,11 +92,11 @@ Response:
 
 The generated short code is based on the database ID encoded using Base62.
 
-**2. Redirect to the original URL**
+2. Redirect to the original URL
 
 GET
 
-`/{shortCode}`
+/{shortCode}
 
 
 Example:
