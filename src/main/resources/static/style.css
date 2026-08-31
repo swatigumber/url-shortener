@@ -1,28 +1,231 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Klyo — URL Shortener</title> <link rel="stylesheet" href="style.css"> </head> <body> <main class="container">
-<h1>KLYO</h1>
+@font-face {
+font-family: "Densia Sans";
+src: url("/font/DensiaSans.woff2") format("woff2");
+font-weight: normal;
+font-style: normal;
+}
 
-<p class="tagline">
-    Shorten your URLs. Keep it simple.
-</p>
+{
+box-sizing: border-box;
+}
 
-<div class="shortener-box">
-    <input
-            type="url"
-            id="urlInput"
-            placeholder="Paste your long URL here..."
-            autocomplete="off"
-    />
+html,
+body {
+margin: 0;
+width: 100%;
+min-height: 100%;
+}
 
-    <button id="shortenButton">
-        Shorten
-    </button>
-</div>
+body {
+min-height: 100vh;
+background: #000;
+color: #fff;
+font-family: Arial, Helvetica, sans-serif;
 
-<p id="message"></p>
+display: flex;
+align-items: center;
+justify-content: center;
 
-<div id="result" class="result hidden">
-    <span>Your short URL</span>
-    <a id="shortUrl" href="#" target="_blank"></a>
-</div>
 
-</main> <script src="script.js"></script> </body> </html>
+}
+
+.container {
+width: min(90%, 680px);
+text-align: center;
+padding: 30px;
+}
+
+/* KLYO Logo */
+
+h1 {
+margin: 0;
+
+font-family: "Densia Sans", Arial, Helvetica, sans-serif;
+font-size: 72px;
+font-weight: 400;
+letter-spacing: 10px;
+
+color: #888;
+
+
+}
+
+/* Tagline */
+
+.tagline {
+margin: 12px 0 40px;
+
+color: #888;
+font-size: 16px;
+
+
+}
+
+/* URL Input */
+
+.shortener-box {
+width: 100%;
+
+display: flex;
+align-items: center;
+gap: 10px;
+
+background: #111;
+border: 1px solid #2a2a2a;
+border-radius: 14px;
+
+padding: 8px;
+
+
+}
+
+input {
+flex: 1;
+min-width: 0;
+
+background: transparent;
+border: none;
+outline: none;
+
+color: #fff;
+
+padding: 16px;
+
+font-size: 15px;
+
+
+}
+
+input::placeholder {
+color: #666;
+}
+
+/* Shorten Button */
+
+button {
+border: none;
+border-radius: 9px;
+
+padding: 16px 24px;
+
+background: #fff;
+color: #000;
+
+font-size: 14px;
+font-weight: 600;
+
+cursor: pointer;
+
+transition:
+    background 0.2s ease,
+    transform 0.1s ease;
+
+
+}
+
+button:hover {
+background: #ddd;
+}
+
+button:active {
+transform: scale(0.98);
+}
+
+button:disabled {
+opacity: 0.5;
+cursor: not-allowed;
+}
+
+/* Error Message */
+
+#message {
+min-height: 20px;
+
+margin-top: 16px;
+
+color: #ff6b6b;
+font-size: 14px;
+
+
+}
+
+/* Result */
+
+.result {
+width: 100%;
+
+margin-top: 24px;
+padding: 20px;
+
+background: #111;
+border: 1px solid #2a2a2a;
+border-radius: 12px;
+
+
+}
+
+.result span {
+display: block;
+
+margin-bottom: 8px;
+
+color: #666;
+font-size: 13px;
+
+
+}
+
+.result a {
+color: #fff;
+
+font-size: 15px;
+text-decoration: none;
+
+word-break: break-all;
+
+
+}
+
+.result a:hover {
+text-decoration: underline;
+}
+
+/* Utility */
+
+.hidden {
+display: none;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+.container {
+    padding: 20px;
+}
+
+h1 {
+    font-size: 52px;
+    letter-spacing: 7px;
+}
+
+.tagline {
+    margin-bottom: 30px;
+}
+
+.shortener-box {
+    flex-direction: column;
+    padding: 10px;
+}
+
+input {
+    width: 100%;
+    text-align: center;
+}
+
+button {
+    width: 100%;
+}
+
+
+}
