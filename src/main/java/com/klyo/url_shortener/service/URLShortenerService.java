@@ -4,6 +4,7 @@ import com.klyo.url_shortener.entity.URLMapping;
 import com.klyo.url_shortener.exception.ShortCodeNotFoundException;
 import com.klyo.url_shortener.repository.URLMappingRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,7 +14,9 @@ public class URLShortenerService {
 
     private final URLMappingRepository urlMappingRepository;
 
-    private final String DNS = "http://localhost:9090/";
+    @Value("${app.base-url:http://localhost:9090/}")
+    private String baseUrl;
+
 
     public URLShortenerService(URLMappingRepository urlMappingRepository ,Base62Encoder base62Encoder) {
         this.urlMappingRepository = urlMappingRepository;
@@ -27,7 +30,7 @@ public class URLShortenerService {
         URLMapping existing = urlMappingRepository.findByLongURL(longUrl);
 
         if (existing != null) {
-            return DNS+existing.getShortURL();
+            return baseUrl +existing.getShortURL();
         }
 
 
@@ -39,7 +42,7 @@ public class URLShortenerService {
         urlMapping.setShortURL(shortCode);
         urlMappingRepository.save(urlMapping);
 
-        return DNS + shortCode;
+        return baseUrl + shortCode;
 
     }
 
