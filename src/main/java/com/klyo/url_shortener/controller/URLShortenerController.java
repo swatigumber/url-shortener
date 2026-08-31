@@ -26,7 +26,7 @@ public class URLShortenerController {
     }
 
 
-    @GetMapping("/{shortCode}")
+    @GetMapping("/{shortCode:[a-zA-Z0-9]+}")
     public ResponseEntity redirect(@PathVariable String shortCode){
         String longURL = urlShortenerService.getLongURL(shortCode);
 
