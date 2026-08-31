@@ -67,48 +67,48 @@ Cloud deployment using Render
 
 
 # 📡 API
-1. Shorten a URL
+**1. Shorten a URL**
 
-POST
+    POST
+    
+    /shorten
+    
+    
+    Example:
+    
+    POST https://klyo-url-shortener.onrender.com/shorten
+    Content-Type: application/json
+    
+    
+    Request:
+    
+    {
+    "longUrl": "https://google.com"
+    }
+    
+    
+    Response:
+    
+    {
+    "shortURL": "https://klyo-url-shortener.onrender.com/b"
+    }
+    
+    
+    The generated short code is based on the database ID encoded using Base62.
 
-/shorten
+**2. Redirect to the original URL**
 
-
-Example:
-
-POST https://klyo-url-shortener.onrender.com/shorten
-Content-Type: application/json
-
-
-Request:
-
-{
-"longUrl": "https://google.com"
-}
-
-
-Response:
-
-{
-"shortURL": "https://klyo-url-shortener.onrender.com/b"
-}
-
-
-The generated short code is based on the database ID encoded using Base62.
-
-2. Redirect to the original URL
-
-GET
-
-/{shortCode}
-
-
-Example:
-
-GET https://klyo-url-shortener.onrender.com/b
-
-
-The application looks up the short code and redirects the request to the corresponding long URL.
+    GET
+    
+    /{shortCode}
+    
+    
+    Example:
+    
+    GET https://klyo-url-shortener.onrender.com/b
+    
+    
+    The application looks up the short code and redirects the request to the corresponding long URL.
 
 # 🔢 How Short Codes Work
 
