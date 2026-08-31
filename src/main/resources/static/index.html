@@ -1,0 +1,28 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Klyo — URL Shortener</title> <link rel="stylesheet" href="style.css"> </head> <body> <main class="container">
+    <h1>KLYO</h1>
+
+    <p class="tagline">
+        Shorten your URLs. Keep it simple.
+    </p>
+
+    <div class="shortener-box">
+        <input
+                type="url"
+                id="urlInput"
+                placeholder="Paste your long URL here..."
+                autocomplete="off"
+        />
+
+        <button id="shortenButton">
+            Shorten
+        </button>
+    </div>
+
+    <p id="message"></p>
+
+    <div id="result" class="result hidden">
+        <span>Your short URL</span>
+        <a id="shortUrl" href="#" target="_blank"></a>
+    </div>
+
+</main> <script src="script.js"></script> </body> </html>
